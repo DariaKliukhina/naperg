@@ -17,9 +17,7 @@ export const resolvers = {
       return ctx.prisma.user.findUnique({ where: { id: userId } })
     },
     getUserSettings: (parent, args, ctx: Context) => {
-      // just for now
-      // in future get userId from session
-      const { userId } = args
+      const userId = utils.getUserId(ctx)
 
       if (!userId) throw new Error('Bad request')
       return ctx.prisma.setting.findUnique({ where: { userId } })
@@ -113,7 +111,8 @@ export const resolvers = {
     },
 
     updateUserSettings: async (parent, args, ctx: Context) => {
-      const { userId, theme } = args
+      const userId = utils.getUserId(ctx)
+      const { theme } = args
 
       try {
         const setting = await ctx.prisma.setting.findFirst({
