@@ -21,6 +21,6 @@ export const mutation = gql`
         # The return value of this endpoint is unused. 
         #
         # https://stackoverflow.com/questions/44737043/is-it-possible-to-not-return-any-data-when-using-a-graphql-mutation
-        refreshFeeds(feedIds: [String!]): Boolean
+        refreshFeeds: Boolean
     }
 `;

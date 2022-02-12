@@ -50,14 +50,6 @@ export const rssMutationResolvers = {
               },
             });
           }
-          // in future PRs we gonna use it snippet stuff
-          // await ctx.prisma.post.upsert({
-          //   // @ts-ignore
-          //   where: { title },
-          //   update: {},
-          //   // @ts-ignore
-          //   create: { title, url, content: content || description, sourceId: source.id },
-          // });
         }
       } catch (e) {
         console.error(e);
