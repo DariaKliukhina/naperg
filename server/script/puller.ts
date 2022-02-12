@@ -15,7 +15,7 @@
  * For further reference, see "architecture 0" on the lecture slides.
  */
 
-import * as schedule from 'node-schedule';
+import { scheduleJob } from 'node-schedule';
 import { request, gql } from 'graphql-request';
 
 async function main() {
@@ -23,7 +23,7 @@ async function main() {
   // refresh all feeds with the appropriate arguments.
 
   // */10 every 10 seconds
-  const job = schedule.scheduleJob('*/10 * * * *', async () => {
+  scheduleJob('1 * * * *', async () => {
     const query = gql`
         mutation Mutation {
             refreshFeeds
@@ -33,10 +33,8 @@ async function main() {
     // Handling
     console.log('started');
     const response = await request('http://localhost:4000/graphql', query);
-    console.log(response);
+    console.log(response)
   });
-
-  job.invoke()
 }
 
 // TODO: Last time, people seemed confused about where the "scheduling"
