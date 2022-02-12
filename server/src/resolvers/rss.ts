@@ -39,7 +39,7 @@ export const rssMutationResolvers = {
           const { title, link: url, content, description } = parsedResult;
           // Raw SQL stuff in future PRs we made awesome code
           // @ts-ignore
-          const post = await ctx.prisma.post.findFirst({ url });
+          const post = await ctx.prisma.post.findFirst({ where: { url } });
           if (!post) {
             await ctx.prisma.post.create({
               data: {
