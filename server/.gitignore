@@ -3,3 +3,7 @@ node_modules/
 dist/
 *.env*
 *.swp
+./postgres-db
+./redis-db
+postgres-db
+redis-db
